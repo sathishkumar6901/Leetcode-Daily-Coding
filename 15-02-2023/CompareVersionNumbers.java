@@ -45,35 +45,27 @@ All the given revisions in version1 and version2 can be stored in a 32-bit integ
 /*********************************************************************/
 
 
-Method 1:
-  step 1: Split the two strings with respect to dot('.') and store the array into string array.
-  step 2: Iterate while loop till both string arrays reach their length.
-  step 3: If the string array pointer(i or j) less than their length take the particulat character and covert it into integer otherwise take 0 to data1/data2.
-  step 4: if data1 > data2 return 1.
-  step 5: if data1 < data2 return -1;
-  setp 6: after terminating while loop, which means both the string are same. so return 0.
-  
 Progarm 1:
 import java.util.*;
 
 class Solution{
    public int compareVersion(String version1, String version2) {
-        String[] s1 = version1.split("\\.");
-        String[] s2 = version2.split("\\.");
+        String[] s1 = version1.split("\\.");//Split the string with respect to dot('.') and store it as string array.
+        String[] s2 = version2.split("\\.");//Split the string with respect to dot('.') and store it as string array.
         int len1=s1.length, len2=s2.length;
         int i=0,j=0;
         while(i<len1 || j<len2)
         {
-            int a=i<len1?Integer.parseInt(s1[i]):0;
-            int b=j<len2?Integer.parseInt(s2[j]):0;
+            int a=i<len1?Integer.parseInt(s1[i]):0;// convert the string value into integer value
+            int b=j<len2?Integer.parseInt(s2[j]):0;// convert the string value into integer value
             if(a>b)
-                return 1;
+                return 1;//if value1 greater than value2, which means the first version is latest. So return 1.
             else if(a<b)
-                return -1;
+                return -1;//if value2 greater than value1, which means the second version is latest. So return -1.
             i++;
             j++;
         }
-        return 0;
+        return 0;//if the function doesn't return anything, which means both the versions are same. So return 0.
     }
  }
  public class CompareVersionNumbers
@@ -87,4 +79,3 @@ class Solution{
       System.out.println(ob.compareVersion(version1,version2));
     }
  }
-
